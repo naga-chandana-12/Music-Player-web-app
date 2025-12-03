@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+        }
+        .player {
+            margin-top: 50px;
+            padding: 20px;
+            background: #222;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        body {
+  background-image: url('');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+        button {
+            margin: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background:rgb(236, 39, 187);
+            color:white;
+            border-radius: 5px;
+        }
+        body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color:#121212;
+  color: rgb(17, 165, 244);
+}
+#heading {
+    font-size: 50px;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 5px solid #3498db;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    box-shadow: 0px 0px 10px rgba(201, 17, 17, 0.808);
+  }
+  
+  
+  
+
+    </style>
+</head>
+<body> 
+    <h1>Rythm-Zone</h1>
+        <div class="music-player">
+    <img id="album-art" src="thandel.jpg" alt="Album Art"width="300"height="400">
+    <audio id="audio" src="mus-2.mp3"></audio/mp3>
+    <div class="buttons">
+      <button id="prev-btn">Previous</button>
+      <button id="play-pause-btn">Play/Pause</button>
+      <button id="next-btn">Next</button>
+    </div>
+</div>
+<script>
+const albumArt = document.getElementById('album-art');
+const audio = document.getElementById('audio');
+const prevBtn = document.getElementById('prev-btn');
+const playPauseBtn = document.getElementById('play-pause-btn');
+const nextBtn = document.getElementById('next-btn');
+
+const songs = [
+  { title: 'Song 1', src: 'mus-2.mp3', image: 'thandel.jpg' },
+  { title: 'Song 2', src: 'mus-1.mp3', image: 'meenu.jpg' },
+  { title: 'Song 3', src: 'mus-3.mp3', image: 'premalo.jpg' },
+  { title: 'song 4', src: 'mus-4.mp3', image: 'imagexxx.jpg' },
+  { title: 'song 5', src: 'mus-5.mp3', image: 'ninnu kori.jpg' },
+  { title: 'song 4', src: 'mus-6.mp3', image: 'hello.jpg' },
+  { title: 'song 4', src: 'mus-7.mp3', image: 'chirutha.jpg' },
+  { title: 'song 4', src: 'mus-8.mp3', image: 'ishq.jpg' },
+];
+
+let currentSongIndex = 0;
+
+prevBtn.addEventListener('click', () => {
+  currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+  updateSong();
+});
+
+playPauseBtn.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+    playPauseBtn.textContent = 'Pause';
+  } else {
+    audio.pause();
+    playPauseBtn.textContent = 'Play';
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  currentSongIndex = (currentSongIndex + 1) % songs.length;
+  updateSong();
+});
+
+function updateSong() {
+  audio.src = songs[currentSongIndex].src;
+  albumArt.src = songs[currentSongIndex].image;
+  audio.play();
+}
+
+</script>
+</html>
+  
+  
+  
